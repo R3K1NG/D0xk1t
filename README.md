@@ -40,13 +40,13 @@ A fucking brain - _thank you_
 
 ####_The follow dependecies can be installed using pip. If not, the program will automatically do it for you_
 
-* python-nmap  __-still a work-in-progress__
+* python-nmap  __still a work-in-progress__
 
 * python-geoip  
 
 * python-geoip-geolite2  
 
-* re __-for regular expressions, probably already installed__
+* re __for regular expressions, probably already installed__
 
 * urllib2
 
