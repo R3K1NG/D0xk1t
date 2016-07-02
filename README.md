@@ -34,25 +34,24 @@ Very simple. This program was written on a 64-bit Ubuntu machine, in Python 2. I
 
 Python- _most Linux distros will have Python pre-installed_
 
-Git - _some distros have this already as well, but in case no, execute:_ `sudo apt-get install git`
-
-A fucking brain - _thank you_
-
-####_The follow dependecies can be installed using pip. If not, the program will automatically do it for you_
-
-* python-nmap  __still a work-in-progress__
+* python-nmap  _still a work-in-progress_
 
 * python-geoip  
 
 * python-geoip-geolite2  
 
-* re __for regular expressions, probably already installed__
+* re _for regular expressions, probably already installed_
 
 * urllib2
 
 * lxml
 
 * smtplib
+
+Git - _some distros have this already as well, but in case no, execute:_ `sudo apt-get install git`
+
+A fucking brain - _thank you_
+
 
 #####b.How to install
 OK in order to get D0xK1t, clone the repo
