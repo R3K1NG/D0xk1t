@@ -1,15 +1,34 @@
 #!/usr/bin/python
-import sys, time		#"Preprocessor directives" because I'm used to C++
+import sys, time, platform		# "Preprocessor directives" because I'm used to C++
+import pip
 from subprocess import call
-	
+from getpass import getpass
+
 W = '\033[0m'  # white (normal)
 R = '\033[31m'  # red
-G = '\033[32m'  # green					#Variables for text colors. Saves me the trouble thank you!
+G = '\033[32m'  # green					# Variables for text colors. Saves me the trouble thank you!
 O = '\033[33m'  # orange
 B = '\033[34m'  # blue
 P = '\033[35m'  # purple
 C = '\033[36m'  # cyan
 GR = '\033[37m'  # gray
+
+# New dependencies
+try:
+	import nmap
+	import GeoIP
+	import urllib
+	import urllib2
+	import re
+	import smtplib
+	from geoip import geolite2
+	from lxml import html
+	from email.mime.text import MIMEText
+except ImportError:
+	print R + "You are missing dependencies. They will be installed with pip" + W
+	print "Loading..."
+	time.sleep(3)
+	pip.main(['install', 'python-nmap', 'python-geoip', 'python-geoip-geolite2'])
 
 #Function for writing a D0x.
 def dox():
@@ -48,11 +67,11 @@ def dox():
 	ipadd = raw_input("[>] Now, gimme the " + P + "IP address: " + W)
 	text_file = open("Dox of %s" % name, 'a')
 	text_file.write("\nIP Address: %s" % ipadd)
-	#Emails 
+	#Emails
 	print G + "This next part requires you to enter the emails of the victim. Once you are finished, enter " + R + "quit" + W
 	print B + "If you know the password, place in this format: " + GR + "user@email:password" + W
 	print B + "^ This applies for the Facebook, Twitter and Other Aliases! Please use account:password format!" + W
-	
+
 	while True:
 		email = raw_input("[>] Give me an email! ")
 		if email == "quit":
@@ -117,7 +136,7 @@ def dox():
 					text_file = open("Dox of %s" % name, 'a')
 					text_file.write("\n%s" % momalias)
 			print "Any other members?"
-		
+
 		elif fam == "2":
 			text_file = open("Dox of %s" % name, 'a')
 			text_file.write("\n\nINFORMATION OF FATHER")
@@ -206,8 +225,8 @@ def dox():
 					text_file.write("\n%s" % otheralias)
 			print "Any other members?"
 
-	print "OK, *whew* that was A LOT!"
-	print "Now, do you have any pictures or screenshots?"
+	print G + "OK, *whew* that was A LOT!" + W
+	print C + "Now, do you have any pictures or screenshots?" + W
 	while True:
 		pic = raw_input("\n[>] Paste the link here. Else, " + R + "quit: " + W)
 		if pic == "quit":
@@ -219,15 +238,18 @@ def dox():
 	print G + "That's it! Your D0x is complete. Check the folder where this program is contained." + W
 	print "=========================================================="
 
+########################################################################################################################################################
+
 #Function for CUPP
 def cupp():
-	try:	
-		call(["chmod", "a+x", "cupp.py"])		
+	try:
+		call(["chmod", "a+x", "cupp.py"])
 		print C + "----------------------------------------------------------------"
 		print "CUPP, or Common User Password Profiler, creates wordlists based"
 		print "on give information of a victim"
 		print "----------------------------------------------------------------" + W
-		time.sleep(5)
+		print "Loading..."
+		time.sleep(3)
 		call(["./cupp.py","-i"])
 	except OSError:
 		help = input(R +"Something is missing. Consult Help? (y/n) " + W)
@@ -236,6 +258,8 @@ def cupp():
 		elif help == "n":
 			sys.exit()
 
+########################################################################################################################################################
+
 #Function for theHarvester
 def harvester():
 	try:
@@ -243,7 +267,8 @@ def harvester():
 		print "TheHarvester is a Python script that utilizes popular search"
 		print "engines in order to pull out information of a specific target"
 		print "----------------------------------------------------------------" + W
-		time.sleep(5)
+		print "Loading..."
+		time.sleep(3)
 		call(["./autoharvest.sh"])
 	except OSError:
 		help = input(R + "Something is missing. Consult Help? (y/n) " + W)
@@ -251,15 +276,19 @@ def harvester():
 			call(["gedit", "help.txt"])
 		elif help == "n":
 			sys.exit()
+
+########################################################################################################################################################
+
 #Function for NMap
 def nmap():
 	try:
-		call(["chmod", "a+x", "autonmap.py"])	
+		call(["chmod", "a+x", "autonmap.py"])
 		print C + "----------------------------------------------------------------"
 		print "NMap is an open-source tool for network exploration and security"
 		print "auditing. It is used to scan networks and systems"
 		print "----------------------------------------------------------------" + W
-		time.sleep(5)
+		print "Loading..."
+		time.sleep(3)
 		call(["python", "autonmap.py"])
 	except OSError:
 		help = input(R + "Something is missing. Consult Help? (y/n) " + W)
@@ -268,39 +297,181 @@ def nmap():
 		elif help == "n":
 			sys.exit()
 
+########################################################################################################################################################
 
-print G +" ========================================"
-print"	 _____   ___       _   __ _   "
-print" 	|  __ \ / _ \     | | /_ | |  "
-print" 	| |  | | | | |__ _| | _| | |_ "
-print" 	| |  | | | | \ \/ / |/ / | __|"
-print" 	| |__| | |_| |>  <|   <| | |_ "
-print" 	|_____/ \___//_/\_\_|\_\_|\__|"
-print"								  "
-print B + "	     Written By: ex0dus	  " + G 
-print" ======================================== " + W
+#Function for GeoIP
+def geoip():
+	print C + "----------------------------------------------------------------"
+	print "MaxMind has provided a module that enables a user to conduct GeoIP reconaissance."
+	print "Users are able to find location data based on a IPv4 address"
+	print "----------------------------------------------------------------" + W
+	print "Loading..."
+	time.sleep(3)
+	location = raw_input("[>] What is the IP address? " )
+	try:
+		match = geolite2.lookup(location)
+		print O + "========================================"
+		gi = GeoIP.open("GeoLiteCity.dat", GeoIP.GEOIP_INDEX_CACHE | GeoIP.GEOIP_CHECK_CACHE)
+		print "Collected: " + str(gi.record_by_name(location))
+		print "========================================" + W
 
-print "[1] Write a D0x"
-print "[2] Create a Wordlist using CUPP"
-print "[3] Harvest Information"	
-print "[4] AutoNMap Menu"
-print "[5] WTF is this? (aka Help)"
-option = input(O +"[>] What do you want today? " + W)
+		geoiptext = raw_input("[>] Would you like this saved to a text file? (Y/N) ")
+		if geoiptext == "y":
+			text_file = open("geoip_information", 'a')
+			text_file.write("GeoIP Information Results ")
+			text_file.write("\nIP Address: %s " % location)
+			text_file.write("\n" + str(gi.record_by_name(location)))
+		elif geoiptext == "n":
+			sys.exit(G + "Have a great one!" + W)
+	except ValueError:
+		print R + "That was not a valid IP Address! Care to try again?" + W
+		geoip()
 
-if option == 1:
-	dox()
-elif option == 2:
-	cupp()
-elif option == 3:
-	harvester()
-elif option == 4:
-	nmap()
-elif option == 5:
-	print  GR + "=========================================================="
-	print "Hello and welcome to D0xk1t. This is a tool I've created in python for the sole purpose of writing a D0x."
-	print "In the world of hacking, D0xing is viewed as script-kiddish AND illegal and harmful."
-	print "People often look down at those who write D0x. However, this tool is created not to harm."
-	print "Instead, it allows hackers and hacktivists to be able to practice their reconaissance and allow themselves and others to"
-	print "better protect themselves by not exposing too much of their information on the Internet."
-	print" ==========================================================" + W
+########################################################################################################################################################
 
+# Function for Extractor
+def webextract():
+	print C + "----------------------------------------------------------------"
+	print "This feature enables the user to look at a website and obtain specified"
+	print "information, such as emails and phone numbers." + R + " Currently experimental!" + C
+	print "----------------------------------------------------------------" + W
+	print "Loading..."
+	time.sleep(3)
+	url = raw_input("[>] Enter the URL of the website you wish to extract information from: ")
+	htmlFile = urllib.urlopen(url)
+	html = htmlFile.read()
+	print G + "[1] Email Addresses"
+	print "[2] Phone Numbers"
+	print "...more coming soon!" + C
+	respin = raw_input("[>] What do you wish to extract from the site? " + W)
+	if respin == '1':
+		emailRegex = re.findall(r'[\w\.-]+@[\w\.-]+', html)
+		print emailRegex
+		emailtext = raw_input(B + "[>] Would you like it to be saved in a text file? (y/n) ")
+		if emailtext == 'y':
+			text_file = open("emailresult", 'a')
+			text_file.write(str(emailRegex))
+			print P + "Saved! Check folder this program is stored in." + W
+			emaildone = raw_input("Press" + B + " Enter " + W + "when finished ")
+			#Go back to main menu
+			if emaildone == "":
+				print ''
+			else:
+				print 'Why no press enter?'
+		# Do NOT save to a file -> go back.
+		elif emailtext == 'n':
+			webextract()
+
+	elif respin == '2':
+		phoneRegex = re.findall(r'^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$', html)
+		print phoneRegex
+		phonetext = raw_input("[>] Would you like it to be saved in a text file? (y/n) ")
+		if phonetext == 'y':
+			text_file = open("phoneresult", 'a')
+			text_file.write(str(emailRegex))
+			print P + "Saved! Check folder this program is stored in." + W
+			phonedone = raw_input("Press" + B + " Enter " + W + "when finished ")
+			#Go back to main menu
+			if phonedone == "":
+				print ''
+			else:
+				print 'Why no press enter?'
+		elif phonetext == 'n':
+			webextract()
+
+########################################################################################################################################################
+
+def massmail():
+	print C + "For this to work, make to sure to create a different email from your regular account." + W
+	print "Gmail - \'smtp.gmail.com\'"
+	print "Hotmail/Outlook - \'smtp-mail.outlook.com\'"
+	print "Yahoo Mail - \'smtp.mail.yahoo.com\'"
+	print "AT&T - \'smtp.mail.att.net\'"
+	print "Comcast - \'smtp.verizon.net\'"
+
+	smtpser = raw_input(G + "[>} What is the SMTP provider of the email account (e.g smtp.xxxx.com)? " )
+
+
+	# Connect to mail server (TLS)
+	smtpObj = smtplib.SMTP(str(smtpser), 587)
+	smtpObj.set_debuglevel(1)
+	# Test connection with message
+	smtpObj.ehlo()
+	# Start TLS encryption
+	smtpObj.starttls()
+	email_address = raw_input("[>] Enter Email Address (example@example.com): ")
+	email_password = getpass("[>] Enter Email Password (will not be echoed): ")
+	smtpObj.login(str(email_address), str(email_password))
+
+	# The actual message and recipents
+	recipients_address = raw_input("[>] Enter recipent addresses (seperate with comma: example@example.com, example2@example.com): ")
+	recipient_list = recipients_address.split()
+
+	body = raw_input("""[>] Write your body here. '\n' for newline. """)
+	message = MIMEText("""%s""" % body)
+	message['Subject'] = raw_input("[>] Write your subject here:\n")
+	message['From'] = email_address
+	message['To'] = ", ".join(recipient_list)
+	# Sending the email
+	smtpObj.sendmail(email_address, recipient_list, str(message))
+
+########################################################################################################################################################
+
+while True:
+	print G +" ========================================"
+	print O +"	 _____   ___       _   __ _   "
+	print" 	|  __ \ / _ \     | | /_ | |  "
+	print" 	| |  | | | | |__ _| | _| | |_ "
+	print" 	| |  | | | | \ \/ / |/ / | __|"
+	print" 	| |__| | |_| |>  <|   <| | |_ "
+	print" 	|_____/ \___//_/\_\_|\_\_|\__|"
+	print"								  "
+	print B + "	     Written By: ex0dus	  " + G
+	print" ======================================== " + W
+
+
+	print "You are currently using " + P + str(platform.system()) + " " + str(platform.release()) + W
+	if str(platform.system()) != "Linux":
+		print R + "You are not using Linux. It is the recommended operating system for this program. Some features may not work" + W
+	else:
+		print C + "D0xk1t v2.0 nightly" + W
+
+	print P + "NOTE: This version of D0xk1t, v2 is still in the works. Right now, you have obtained an experimental copy." + W
+	print "				  "
+	print "[1] Write a D0x"
+	print "[2] Create a Wordlist using CUPP"
+	print "[3] Harvest Information"
+	print "[4] AutoNMap Menu"
+	print "[5] GeoIP"
+	print "[6] Website Extractor"
+	print "[7] Mass Mailer"
+	print "[8] What is this?"
+	option = input(O +"[>] What do you want today? " + W)
+
+	if option == 1:
+		dox()
+	elif option == 2:
+		cupp()
+	elif option == 3:
+		harvester()
+	elif option == 4:
+		nmap()
+	elif option == 5:
+		geoip()
+	elif option == 6:
+		webextract()
+	elif option == 7:
+		massmail()
+	elif option == 8:
+		print  GR + "===================================================================================================================="
+		print "Hello and welcome to D0xk1t. This is a tool I've created in python for the sole purpose of writing a D0x."
+		print "In the world of hacking, D0xing is viewed as script-kiddish AND illegal and harmful."
+		print "People often look down at those who write D0x. However, this tool is created not to harm."
+		print "Instead, it allows hackers and hacktivists to be able to practice their reconaissance and allow themselves and others to"
+		print "better protect themselves by not exposing too much of their information on the Internet."
+		print" ====================================================================================================================" + W
+		helpdone = raw_input("Press" + B + " Enter " + W + "when finished ")
+		if helpdone == "":
+			print ''
+		else:
+			print 'Why no press enter?'
