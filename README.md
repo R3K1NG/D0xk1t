@@ -1,9 +1,9 @@
 # D0xk1t
-## Version 2.0 nightly
+## _Version 2.0 nightly_
 Tool for writing D0x. Written in Python.
 
 
-###1.Credit
+###1. Credit
 This software involves using the code from several other projects. Credit goes to
 
 -Mebus [https://github.com/Mebus/cupp]
@@ -14,7 +14,7 @@ This software involves using the code from several other projects. Credit goes t
 
 -Maxmind [https://www.maxmind.com/]
 
-###2.About
+###2. About
 D0xing is seen by not only hackers, but the general population that has a grasp of computer technology as an activity deemed script-kiddish, malicious, harmful, etc.
 
 The sole purpose I wrote this program was
@@ -27,10 +27,10 @@ The sole purpose I wrote this program was
 
 4. Bring awareness to shutting the fuck up, script kiddies.
 
-###3.How to use
+###3. How to use
 Very simple. This program was written on a 64-bit Ubuntu machine, in Python 2. It's best to be running a Linux machine when using this.
 
-####a.Dependencies:
+####a. Dependencies:
 
 Python- _most Linux distros will have Python pre-installed_
 
@@ -53,11 +53,11 @@ Git - _some distros have this already as well, but in case no, execute:_ `sudo a
 A fucking brain - _thank you_
 
 
-#####b.How to install
+#####b. How to install
 OK in order to get D0xK1t, clone the repo
 `git clone https://github.com/ex0dus-0x/D0xk1t`
 
-#####c.Usage
+#####c. Usage
 First, change your directory into the repo
 `cd /path/to/D0xK1t`
 Then, execute
