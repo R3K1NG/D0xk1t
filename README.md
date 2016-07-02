@@ -28,7 +28,7 @@ The sole purpose I wrote this program was
 4. Bring awareness to shutting the fuck up, script kiddies.
 
 ###3. How to use
-Very simple. This program was written on a 64-bit Ubuntu machine, in Python 2. It's best to be running a Linux machine when using this.
+Very simple. This program was written on a 64-bit ~~Ubuntu~~ Kali Linux  machine, in Python 2. It's best to be running a Linux machine when using this.
 
 ####a. Dependencies:
 
@@ -63,6 +63,8 @@ First, change your directory into the repo
 Then, execute
 `python start.py`
 
-You will be presented with a menu. Enter the option you want. That easy. Have fun getting roasted for your lousy D0x.
+[![asciicast](https://asciinema.org/a/aa8ju2ts1v9v030bpb9267ovp.png)](https://asciinema.org/a/aa8ju2ts1v9v030bpb9267ovp)
+
+You will be presented with a menu. Enter the option you want. That easy.
 
 Copyright @ ex0dus-0x
