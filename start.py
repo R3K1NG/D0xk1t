@@ -436,7 +436,7 @@ while True:
 	else:
 		print C + "D0xk1t v2.0 nightly" + W
 	print "				  "
-	print  + "NOTE: This version of D0xk1t, v2 is still in the works. Right now, you have obtained an experimental copy." + W
+	print  P + "NOTE: This version of D0xk1t, v2 is still in the works. Right now, you have obtained an experimental copy." + W
 	print "				  "
 	print "[1] Write a D0x"
 	print "[2] Create a Wordlist using CUPP"
