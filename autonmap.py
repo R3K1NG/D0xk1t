@@ -1,14 +1,5 @@
-''''
-
-work in progresss
-
-'''
-
-
-
 #!/usr/bin/python
 import sys, os, time
-import nmap
 from subprocess import call
 
 print "I'm sorry, but right now, I'm working on improving features for this. I will push changes as soon as possible, so make sure to update repository."
@@ -30,17 +21,6 @@ while True:
 	print "10)Standard Service Detection\n11)Heartbleed SSL Vulnerability Scan\n12)IP Info\n14)Go Back"
 
 	option = input("[>] Choose An Option, Young Padawan: ")
-
-	if option == 1:
-		print '----------------------------------------------------'
-		print 'Host: %s' % host
-		print 'Status: %s' %
-
-
-
-
-
-'''
 	if option == 1:
 		call(["nmap", "-v", target])
 	elif option == 2:
@@ -69,4 +49,3 @@ while True:
 		call(["gedit", "help.txt"])
 	elif option == 14:
 		call(["python","menu.py"])
-'''
