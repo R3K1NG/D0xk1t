@@ -92,7 +92,7 @@ def dox():
 	#Other aliases
 	print G + "OK if you got other aliases, such as LinkedIN, Instagram, Snapchat, Spotify, etc. you can also include!" + W
 	print B + "When you enter something, please format like so: Alias: user/link:optionalpassword" + W
-	print B + "Again, if you know the password, include that too! Enter" + R + "quit" + B + "when you are done!" + W
+	print B + "Again, if you know the password, include that too! Enter " + R + "quit" + B + " when you are done!" + W
 
 	while True:
 		alias = raw_input("[>]")
