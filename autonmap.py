@@ -8,7 +8,6 @@ while True:
 
 	print "----------------------------------------------------------------"
 	print " [+] NMap Automatic Network/Host Scanner [+]"
-	print " By: Alan Cao"
 	print "----------------------------------------------------------------"
 
 	nm = nmap.PortScanner()
