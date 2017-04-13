@@ -1,0 +1,125 @@
+{% extends 'bootstrap/base.html' %}
+
+{% block html_attribs %} lang="en"{% endblock %}
+
+{% block metas %}
+  {{ super() }}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="author" content="">
+{% endblock %}
+
+{% block styles %}
+
+  {{ super() }}
+    <!-- Custom CSS -->
+    <link href="{{ url_for('static', filename='css/sb-admin.css') }}" rel="stylesheet">
+    
+    <!-- Animate.css -- >
+    <link href="{{ url_for('static', filename='css/animate.css') }}" rel="stylesheet" >
+
+    <!-- Custom Fonts -->
+    <link href="{{ url_for('static', filename='font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
+    
+{% endblock%}
+
+{% block title %}
+  {% if user %}
+     D0xk1t - Welcome {{ user }} ! 
+  {% else %}
+      D0xk1t - Welcome Stranger! 
+  {% endif %}
+{% endblock %}
+
+<!-- Body Begins Here! -->
+{% block body %}
+
+  {% block navbar %}
+    <div id="wrapper">
+      <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header" >
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href = "{{ url_for('index') }}">D0xk1t</a>
+          </div>
+          <!-- Top Menu Items -->
+          <ul class="nav navbar-right top-nav">
+              <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> {{ user }}<b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                      <li>
+                          <a href="{{ url_for('logout') }}"><i class="fa fa-fw fa-power-off"></i> Logout</a>
+                      </li>
+                  </ul>
+              </li>
+          </ul>
+          <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+          <div class="collapse navbar-collapse navbar-ex1-collapse">
+              <ul class="nav navbar-nav side-nav">
+                  <li>
+                      <a href="{{ url_for('index') }}"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                  </li>
+                  <li>
+                      <a href="{{ url_for('dox') }}"><i class="fa fa-fw fa-file-text"></i> D0x</a>
+                  </li>
+                  <li>
+                      <a href="{{ url_for('geoip') }}"><i class="fa fa-fw fa-location-arrow"></i> GeoIP Location</a>
+                  </li>
+                  <li>
+                      <a href="#"><i class="fa fa-fw fa-list"></i> Wordlist Generation</a>
+                  </li>
+                  <li>
+                      <a href="#"><i class="fa fa-fw fa-envelope-o"></i> Mass Mailer</a>
+                  </li>
+                  <li>
+                      <a href="#"><i class="fa fa-fw fa-wrench"></i> webNmap</a>
+                  </li>
+                  <li>
+                      <a href="{{ url_for('develop') }}"><i class="fa fa-fw fa-code"></i> API Docs</a>
+                  </li>
+                  <li>
+                      <a href="{{ url_for('faq') }}"><i class="fa fa-fw fa-question"></i> FAQ</a>
+                  </li>
+
+              </ul>
+          </div>
+          <!-- /.navbar-collapse -->
+      </nav>
+    {% endblock %}
+
+              
+        <div id="page-wrapper">
+          <div class="container-fluid">
+            
+            
+            <!-- Jinja Templating Starts Here -->
+            {% block content %}{% endblock %}
+
+          </div>
+        </div>
+
+    </div>
+    <!-- /#wrapper -->
+    
+    {% block scripts %}
+      
+        <!-- Github Buttons JS -->
+        <script async defer src="https://buttons.github.io/buttons.js"></script>
+        <!-- Custom JS -->
+        <script src="{{ url_for('static', filename='js/doxkit.js') }}"></script>
+      {{super()}}
+
+    {% endblock %}
+
+{% endblock %}
+
+
+
+
+

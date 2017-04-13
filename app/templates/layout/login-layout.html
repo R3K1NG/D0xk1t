@@ -1,0 +1,74 @@
+{% extends 'bootstrap/base.html' %}
+
+{% block html_attribs %} lang="en"{% endblock %}
+
+
+{% block styles %}
+  {{super()}}
+  
+  <link href="https://fonts.googleapis.com/css?family=Rubik" rel="stylesheet"> 
+  
+  <!-- Style for Login Pages and etc -->
+  <style>
+  
+    body {
+      background-color: white;
+      font-family: "Rubik", sans-serif;
+    }
+
+    ul > li {
+      display:inline; 
+      list-style-type: none;
+      margin-right: 2em;
+    }
+
+    
+    .login-heading {
+      margin-top: 3em;
+      text-align: center;
+    }
+    
+    .login-subheading {
+      text-align: center;
+      font-weight: lighter;
+      font-size: 100%;
+      margin-bottom: 2em;
+    }
+    
+    div#login-panel {
+      max-width:400px;
+      margin-left:auto; 
+      margin-right:auto;
+    }
+  
+</style>
+
+{% endblock%}
+
+
+{% block title %} Login - D0xk1t {% endblock %}
+
+<!-- Body Begins Here! -->
+{% block body %}          
+    <div id="login">
+        <div class="container-fluid">
+                
+          {% block content %}{% endblock %}
+
+          </div>
+      </div>
+    </div>
+        <!-- /#wrapper -->
+        
+    {% block scripts %}
+      
+        <!-- Github Buttons JS -->
+        <script async defer src="https://buttons.github.io/buttons.js"></script>
+        <!-- Custom JS -->
+        <script src="{{ url_for('static', filename='js/doxkit.js') }}"></script>
+      {{super()}}
+
+    {% endblock %}
+
+{% endblock %}
+

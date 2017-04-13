@@ -1,0 +1,43 @@
+{% extends "layout/login-layout.html" %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block content %}
+
+<h5><a href="/"><i class="fa fa-arrow-left"></i> Back </a></h5>
+<h1 class="login-heading"><b>> Frequently Asked Questions</b></h1>
+
+<br>
+
+<div class="login-content col-md-11 col-md-offset-1">
+    <p><b>1. What is this? </b></p>
+    <p>
+      D0xk1t is an <b>open-source</b>, <b>self-hosted</b> and <b>easy to use</b> active 
+      reconaissance web application for penetration testers. Based off of the prior
+      command-line script, D0xk1t is now fully capable of conducting reconaissance
+      and penetration testing for security researchers who need a framework without the 
+      head-scratching.
+    </p>
+    <br />
+    <p><b>2. Is this a website / webapp ?</b></p>
+    <p>
+      D0xk1t is self-hosted. There is no server stack, cloud-based service, SaaS, etc. that is 
+      holding it up. You can have the option of deploying D0xk1t on a local network, or deploying
+      your own instance on any infrastructure / technology as you wish. Although not recommended, 
+      for security purposes, change the default authentication if you wish to expose to the Internet.
+    </p>
+    <br />
+    <p><b>3. Is this free ?</b></p>
+    <p>
+      Yes. D0xk1t will forever be open-source. If you wish to contribute, you can make a fork, add any
+      changes, and send a pull request on Github.
+    </p>
+    <br />
+    <p><b>4. How else can I develop on this?</b></p>
+    <p>
+      I am currently working on API endpoints for D0xk1t. You can access them <a href="{{ url_for('develop')}}">
+      here</a>.
+    </p>
+</div>
+
+{% endblock %}

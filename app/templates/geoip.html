@@ -1,0 +1,100 @@
+{% extends "layout/layout.html" %}
+{% import "bootstrap/wtf.html" as wtf %} 
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block content %}
+
+
+<h1 class="page-heading"> GeoIP Module <small>Providing locational data with Maxmind's GeoIP API</small></h1>
+
+<hr />
+
+<div class="row">
+  
+  <!-- About Panel -->
+  <div class="col-lg-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+          <h3 class="panel-title"><i class="fa fa-question-circle fa-fw"></i>About</h3>
+      </div>
+      <div class="panel-body">
+          <div class="list-group">
+            When working with metadata, IP addresses often pop up as a point-of-interest.
+            Using Maxmind and Google Map's APIs, the GeoIP module aims to collect geolocation
+            information on public IP addresses, in order to gather data on physical location during
+            the reconaissance stage of the killchain.
+         </div>
+       </div> <!-- panel-body-->
+    </div> <!-- panel -->
+    
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+        <div class="alert alert-{{ category }} alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+         {{ message }}
+        </div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}    
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="container" id="new-dox">
+        <form method="POST" id="dox-form">
+          <div class="form-group">
+              {{ form.csrf_token }}
+              {{ wtf.form_field(form.ip )}}
+              <input type="submit" class="btn" />
+          </div>
+        </form>
+      </div>
+    </div>
+    {% if latitude and longitude %}
+      <div class="col-md-2 col-md-offset-2">
+        {{googlemap("geoip_map", lat=latitude, lng=longitude, markers=[(latitude, longitude)])}}
+      </div>
+        
+    {% endif %}
+    <div class="col-md-4 col-md-offset-2">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title"><i class="fa fa-user fa-fw"></i> IP Information</h2></h3>
+        </div>
+        <div class="panel-body">
+            <div class="list-group">
+              {% if ip_data %}
+              <table class="table">
+                  <tr>
+                    <th scope="row">City </th>
+                    <td>{{ ip_data["city"]}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Region / State</th>
+                    <td>{{ ip_data["metro_code"] }} </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Country</th>
+                    <td>{{ ip_data["country_code"] }} / {{ ip_data["country_name"]}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Latitude / Longitude</th>
+                    <td>{{ ip_data["latitude"] }} / {{ip_data["longitude"]}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Postal Code</th>
+                    <td>{{ ip_data["postal_code"] }}</td>
+                  </tr>
+              </table>
+              {% else %}
+                (once collected, D0xk1t will display all known information on the IP address)              
+              {% endif %}
+           </div>
+         </div> <!-- panel-body-->
+      </div> <!-- panel -->
+
+    </div>
+
+
+{% endblock %}
