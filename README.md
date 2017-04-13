@@ -1,6 +1,6 @@
 ![logo](/extras/logo.png)
 
- _Active reconaissance and information gathering built in a portable web application_ 
+Active reconaissance and information gathering built in a portable web application_
 
 ---
 
@@ -10,7 +10,6 @@ Looking for the older version of D0xk1t? Check inside the `script` folder, where
 
 This revision is not at all production-quality! I am only releasing it publicly for code review. Still, this does not mean that I won't be working on this!
 
----
 
 ![logo](/extras/screenshot.png)
 
