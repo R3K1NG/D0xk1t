@@ -1,8 +1,7 @@
 ![logo](/extras/logo.png)
 
-Active reconaissance and information gathering built in a portable web application_
+Active reconaissance and information gathering built in a portable web application
 
----
 
 ## NOTE
 
