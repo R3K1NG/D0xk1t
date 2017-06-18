@@ -3,10 +3,11 @@
 ##### Flask Application Dependencies #####
 from app import app
 from config import *
-from app.forms import DoxForm, LoginForm, GeoIPForm
+from app.forms import DoxForm, LoginForm, GeoIPForm, MailForm
 from flask import render_template, redirect, url_for, flash, request, session
 from flask import jsonify, Response
 from flask_googlemaps import GoogleMaps, Map
+from flask_mail import Mail
 from redis import Redis
 
 ##### Other Dependencies #####
@@ -195,8 +196,7 @@ def geoip():
     if request.method == "POST":
         geoip = pygeoip.GeoIP("app/GeoLiteCity.dat")
         ip_data = geoip.record_by_addr(request.form['ip'])
-        return render_template('geoip.html', title="GeoIP Module", user=user, form=form, 
-                            latitude=ip_data["latitude"], longitude=ip_data["longitude"], ip_data=ip_data)
+        return render_template('geoip.html', title="GeoIP Module", user=user, form=form,                             latitude=ip_data["latitude"], longitude=ip_data["longitude"], ip_data=ip_data)
     else:
         return render_template('geoip.html', title="GeoIP Module", user=user, form=form,
                                 latitude="0", longitude="0")
@@ -206,8 +206,21 @@ def ipinfo(ip_address):
     geoip = pygeoip.GeoIP("app/GeoLiteCity.dat")
     ip_data = geoip.record_by_addr(ip_address)
     return jsonify(ip_data)
+
+@app.route('/massmail')
+def massmail():
+    form = MailForm()
+    if request.method == "POST":
+        return "good"
+    else:
+        return render_template("massmail.html", title="Mass Mailer Module", user=user, form=form)
         
 if __name__ == '__main__':
-    app.run(debug=True)
+    try:
+        os.system("sudo /etc/init.d/redis-server start")
+    except:
+        sys.exit("Redis couldn't be started. Is it installed?")
+    app.run()
+    
     
 
