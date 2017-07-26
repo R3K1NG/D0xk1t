@@ -1,3 +1,0 @@
-This is the __README__ for the very first revision of D0xk1t I wrote. You can tell how terribly written the script is, but this is left here to just to showcase how trash of a developer I was 5+ years ago, during my early-late middle school years. If you somehow still find any sort of interest in this project, you can utilize it, as it is bundled with the current revision's repository.
-
-    python d0xk1t.py

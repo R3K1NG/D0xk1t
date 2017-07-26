@@ -19,11 +19,3 @@ class DoxForm(FlaskForm):
 
 class GeoIPForm(FlaskForm):
     ip = StringField('IP Address', validators=[IPAddress()])
-
-class MailForm(FlaskForm):
-    server = StringField('Email Server', validators=[DataRequired()])
-    port = IntegerField('Email Port', validators=[DataRequired()])
-    ssl = BooleanField("Use SSL?", default="checked", validators=[DataRequired()])
-    tls = BooleanField("Use TLS?", default="checked", validators=[DataRequired()])
-    username = StringField('Username', validators=[DataRequired()])
-    password = PasswordField('Password', validators=[DataRequired()])

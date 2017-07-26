@@ -1,13 +1,6 @@
 ![logo](/extras/logo.png)
 
-Active reconaissance and information gathering built in a portable web application
-
-
-## NOTE
-
-Looking for the older version of D0xk1t? Check inside the `script` folder, where all of the original code is retained in its glorious crappy form.
-
-This revision is not at all production-quality! I am only releasing it publicly for code review. Still, this does not mean that I won't be working on this!
+Active reconaissance, information gathering and OSINT built in a portable web application
 
 
 ![logo](/extras/screenshot.png)
@@ -17,10 +10,7 @@ This revision is not at all production-quality! I am only releasing it publicly 
 
 1. What is this? 
 
-D0xk1t is an __open-source__, __self-hosted__ and __easy to use__ active 
-reconaissance web application for penetration testers. Based off of the prior
-command-line script, D0xk1t is now fully capable of conducting reconaissance
-and penetration testing for security researchers who need a framework without the 
+D0xk1t is an __open-source__, __self-hosted__ and __easy to use__ OSINT and active reconaissance web application for penetration testers. Based off of the prior command-line script, D0xk1t is now fully capable of conducting reconaissance and penetration testing for security researchers who need a framework without the 
 head-scratching.
 
 2. Is this a website / webapp ?
@@ -94,7 +84,7 @@ Open `config.py`. Here, you will see all the environmental variables that the ap
 
 ### 3.3 Deployment
 
-Once installed, run with `python run.py`. The application is accessible at `127.0.0.1:5000`. Login with credentials, and you will be present with the admin panel.
+Once installed, run with `python run.py`. The application will run a first-time boot, and will then be accessible at `127.0.0.1:5000`. Login with credentials, and you will be present with the admin panel.
 
 Of course, this is self-hosting on localhost. Although work-in-progress, D0xk1t will soon support hosting on a variety of SaaS and server stacks of your choice.
 
@@ -107,25 +97,32 @@ Of course, this is self-hosting on localhost. Although work-in-progress, D0xk1t 
 
 #### D0x Module
 
-The D0x module is a comprehensive info-gathering database that enables the pentester
-to write "D0x", or a file that holds a collection of data of a certain target, or targets.
-Using this data, the tester will be able to effectively understand their target, which is a
-critical point in the attacker's kill chain. D0xing is usually deemed malicious and black-hat in nature. However, with the D0x module, we aim to help security researchers gain momentum when conducting in-the-field pentesting. The D0x module does come with several features, improved upon based off of the prior revision. 
+The D0x module is a comprehensive info-gathering database that enables the pentester to write "D0x", or a file that holds a collection of data of a certain target, or targets.
+Using this data, the tester will be able to effectively understand their target, which is a critical point in the attacker's kill chain. D0xing is usually deemed malicious and black-hat in nature. However, with the D0x module, we aim to help security researchers gain momentum when conducting in-the-field pentesting. 
+
+The D0x module does come with several features, improved upon based off of the prior revision. 
+
+* Secure database support, with delete and export (as `.csv`) options
 
 #### GeoIP Module 
 
-When working with metadata, IP addresses often pop up as a point-of-interest.
-Using Maxmind and Google Map's APIs, the GeoIP module aims to collect geolocation
-information on public IP addresses, in order to gather data on physical location during
+When working with metadata, IP addresses often pop up as a point-of-interest. Using Maxmind and Google Map's APIs, the GeoIP module aims to collect geolocation information on public IP addresses, in order to gather data on physical location during
 the reconaissance stage of the killchain.
+
+* Google Maps support for accurate GeoIP visualization
+* API endpoint support for command-liners or developers.
 
 ---
 
-### 5.0 TODO
+# How to Contribute
 
-* More modules!
-  * include mass mailer, wordlist generation, D0x Module DB support (w/ SQLalchemy, Redis and/or SQLite)
-  * API endpoints
-* Build scripts for web deployment
-* Fix `TypeError` and `ValueError` for GeoIP when non-recognized IP address is inputted.
-* Make website! Surge or Github Pages
+Contributing is easy! Send a pull request if you feel that anything should be changed, removed, optimized, etc. Issues are also great for reporting bugs. 
+
+---
+
+# TODO:
+
+Here are some upcoming features!
+
+* webNmap
+* DNS Enumeration
