@@ -14,7 +14,7 @@
 WTF_CSRF_ENABLED = True
 
 # Enter your Google Maps API Key here!
-GOOGLEMAPS_API_KEY = "AIzaSyCk5ZBJ0IyhfbI2ENGCzun0DcA3abTtQ_I"
+GOOGLEMAPS_API_KEY = "API_KEY_HERE"
 
 # Time to check for active users for Redis Server
 ONLINE_LAST_MINUTES = 5

@@ -254,6 +254,7 @@ def ipinfo(ip_address):
     ip_data = geoip.record_by_addr(ip_address)
     return jsonify(ip_data)
     
+    
 if __name__ == '__main__':
     app.run()
     
