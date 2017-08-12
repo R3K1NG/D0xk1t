@@ -46,7 +46,7 @@ app.secret_key = SECRET_KEY
 app.config['TEMPLATES_AUTO_RELOAD'] = True
 app.config['GOOGLEMAPS_KEY'] = GOOGLEMAPS_API_KEY
 app.config['ONLINE_LAST_MINUTES'] = ONLINE_LAST_MINUTES
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///src/doxkit.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///doxkit.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 
 class DoxForm(FlaskForm):

@@ -8,21 +8,21 @@ Active reconaissance, information gathering and OSINT built in a portable web ap
 
 ## 1.0 Introduction
 
-1. What is this? 
+1. __What is this?__
 
 D0xk1t is an __open-source__, __self-hosted__ and __easy to use__ OSINT and active reconaissance web application for penetration testers. Based off of the prior command-line script, D0xk1t is now fully capable of conducting reconaissance and penetration testing for security researchers who need a framework without the 
 head-scratching.
 
-2. Is this a website / webapp ?
+2. __Is this a website / webapp ?__
 
 Yes and no. In essence, it is not a typical website. D0xk1t is self-hosted. There is no server stack, cloud-based service, SaaS, etc. that is holding it up. You can have the option of deploying D0xk1t on a local network, or deploying
-your own instance on any infrastructure / technology as you wish. Although not recommended, for security purposes, change the default authentication if you wish to expose to the Internet.
+your own instance on any infrastructure / technology as you wish (although not recommended).
 
-3. Is this free ?
+3. __Is this free ?__
 
 Yes. D0xk1t will forever be open-source. If you wish to contribute, you can make a fork, add any changes, and send a pull request on Github.
 
-4. How else can I develop on this?
+4. __How else can I develop on this?__
 
 I am currently working on API endpoints for D0xk1t. 
 
@@ -44,14 +44,6 @@ Since D0xk1t is self-hosted, it does not work immediately out-of-box. It is reco
 
 ### 3.1 Building
 
-__Core Dependencies:__
-
-* Python 2.7.x
-* python-pip 
-* virtualenv 
-* redis-server
-* Git
-
 Lucky for you, there are two ways to build D0xk1t. The __quick 'n easy way__, and the __manual way__.
 
 __Quick 'n Easy Way:__
@@ -61,8 +53,9 @@ __Quick 'n Easy Way:__
 __Manual Way:__
 
     $ git clone https://github.com/ex0dus-0x/D0xk1t && cd D0xk1t
-    $ source venv/bin/activate
+    $ # Start virtualenv if you wish
     $ pip install -r requirements.txt
+    $ python run.py
 
 ### 3.2 Configuration
 
@@ -71,15 +64,10 @@ Open `config.py`. Here, you will see all the environmental variables that the ap
     GOOGLEMAPS_API_KEY = "YOUR_API_KEY_HERE"
 
     SECRET_KEY = 'SECRET_KEY_HERE'
-
-    USER_LOGIN = "hackerman"
-    USER_PASSWORD = "password"
     
 `GOOGLEMAPS_API_KEY` denotes the Google Maps API Key. This is essential for the GeoIP module. You can obtain it [here](https://developers.google.com/maps/) and change the variable accordingly.
 
 `SECRET_KEY` is the private key utilized by WTForm's CSRF protection feature. If deployed, change it to your liking.
-
-`USER_LOGIN` and `USER_PASSWORD` are the variables for authentication. Since D0xk1t is currently serverless, these variables contain the user and password pair when you login to D0xk1t. Of course, if you plan to deploy to the web, __CHANGE THESE!__ otherwise anyone will be able to login with these default credentials.
 
 
 ### 3.3 Deployment

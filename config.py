@@ -25,11 +25,4 @@ ONLINE_LAST_MINUTES = 5
 
 SECRET_KEY = 'SECRET_KEY_HERE'
 
-# The USER_LOGIN and USER_PASSWORD fields are utilized so that the Flask application
-# can severless-ly authenticate by comparing with these two values. If deployed to the
-# Internet, CHANGE THESE, otherwise users will be able to login onto your instance 
-# with these default credentials.
-
-USER_LOGIN = "hackerman"
-USER_PASSWORD = "password"
 
