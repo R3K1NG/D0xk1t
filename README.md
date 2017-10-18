@@ -48,11 +48,11 @@ Lucky for you, there are two ways to build D0xk1t. The __quick 'n easy way__, an
 
 __Quick 'n Easy Way:__
 
-     $ curl https://raw.githubusercontent.com/ex0dus-0x/D0xk1t/master/extras/install | sudo /bin/bash 
+     $ curl https://raw.githubusercontent.com/R3K1NG/D0xk1t/master/extras/install | sudo /bin/bash 
 
 __Manual Way:__
 
-    $ git clone https://github.com/ex0dus-0x/D0xk1t && cd D0xk1t
+    $ git clone https://github.com/R3K1NG/D0xk1t && cd D0xk1t
     $ # Start virtualenv if you wish
     $ pip install -r requirements.txt
     $ python run.py
